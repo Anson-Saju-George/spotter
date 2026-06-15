@@ -1,0 +1,89 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ---- shadcn token -> Tailwind utility mapping ---- */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* ---- Asphalt & Amber palette ---- */
+:root {
+  --radius: 0.625rem;
+
+  --background: #f8fafc;          /* slate-50  */
+  --foreground: #0f172a;          /* slate-900 */
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+
+  --primary: #f59e0b;             /* amber-500 */
+  --primary-foreground: #0f172a;  /* dark text on amber */
+  --secondary: #1e293b;           /* slate-800 (dark surfaces: nav) */
+  --secondary-foreground: #f8fafc;
+
+  --muted: #f1f5f9;               /* slate-100 */
+  --muted-foreground: #64748b;    /* slate-500 */
+  --accent: #fef3c7;              /* amber-100 */
+  --accent-foreground: #0f172a;
+
+  --destructive: #ef4444;
+  --destructive-foreground: #f8fafc;
+
+  --border: #e2e8f0;              /* slate-200 */
+  --input: #e2e8f0;
+  --ring: #f59e0b;                /* amber focus ring */
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html, body, #root {
+    min-height: 100%;
+  }
+  body {
+    margin: 0;
+    background-color: var(--background);
+    background-image: radial-gradient(900px 380px at 50% -140px, #fff7ed, transparent 70%);
+    background-attachment: fixed;
+    color: var(--foreground);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* clean printouts of the ELD log sheets (chrome is hidden via print: utilities) */
+@media print {
+  body {
+    background: #fff;
+  }
+  @page {
+    margin: 1.2cm;
+  }
+}

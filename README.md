@@ -29,17 +29,20 @@ you can then **edit by hand**, with the rest of the trip re-planning around your
 ## Project structure
 
 ```
-app/                 # Vite React frontend (root)
+.                    # repo root = Vite React frontend
   src/               # components, api client, auth
+  public/            # static assets (favicon, etc.)
+  index.html, vite.config.js, package.json
   backend/           # Django backend
     app.py           # single entry point: migrate + seed admin + serve
     settings.py      # flat settings; ROOT_URLCONF = api.api
     api/             # api.py (routes), hos.py (HOS engine), routing.py (ORS), schemas, models
+  temp/              # provided reference material (FMCSA guide, sample log, brief, screenshots)
 ```
 
 ## Local development
 
-**Backend** (`app/backend/`):
+**Backend** (`backend/`):
 ```bash
 python -m venv .venv && . .venv/bin/activate     # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
@@ -47,13 +50,13 @@ cp .env.example .env       # then fill in ORS_API_KEY, ADMIN_EMAILS, ADMIN_PASSW
 python app.py              # migrates, seeds admin, serves on :8000
 ```
 
-**Frontend** (`app/`):
+**Frontend** (repo root):
 ```bash
 npm install
 npm run dev                # http://localhost:5173/spotter/  (proxies /spotter/api -> :8000)
 ```
 
-## Environment variables (`app/backend/.env`)
+## Environment variables (`backend/.env`)
 
 | Key | Purpose |
 |-----|---------|
